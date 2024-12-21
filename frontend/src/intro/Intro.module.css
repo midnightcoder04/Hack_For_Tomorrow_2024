@@ -25,6 +25,7 @@ body {
     font-family: "Exo", serif;
     font-optical-sizing: auto;
     font-weight: 2px;
+    text-decoration: underline;
   }
   p {
     font-size: 1.2rem;
@@ -86,6 +87,6 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
-/* .screenshot1{
-    border: 1px,solid,white;
-} */
+.screenshot2{
+    margin-bottom: 50px;
+}

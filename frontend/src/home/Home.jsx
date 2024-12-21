@@ -10,7 +10,7 @@ import WelcomeMessage from '../components/WelcomeMessage';
 const formatMessage = (message) => {
   // Replace **text** with bold text and * with new line
   const formattedMessage = message
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold text
+    .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') // Bold text
     .replace(/\*/g, ' '); // New line for *
 
   return formattedMessage;

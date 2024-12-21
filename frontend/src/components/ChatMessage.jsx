@@ -42,7 +42,8 @@ export default function ChatMessage({ message }) {
               backgroundColor:'#2d2d2d',
               borderRadius:'20px',
               padding:'20px',
-              margin:'10px'
+              margin:'10px',
+              
             }}
           >
             <div dangerouslySetInnerHTML={{ __html: message.content }} />
