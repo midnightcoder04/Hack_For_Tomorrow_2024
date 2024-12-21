@@ -11,7 +11,7 @@ const formatMessage = (message) => {
   // Replace **text** with bold text and * with new line
   const formattedMessage = message
     .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') // Bold text
-    .replace(/\*/g, ' '); // New line for *
+    .replace(/\*/g, '<br />'); // New line for *
 
   return formattedMessage;
 };
