@@ -1,3 +1,4 @@
+// Home.jsx
 import { useState } from 'react';
 import Header from '../components/Header';
 import ChatMessage from '../components/ChatMessage';
@@ -12,9 +13,8 @@ export default function Home() {
 
   const applicationToken = import.meta.env.VITE_APP_TOKEN;
 
-
   const langflowClient = new LangflowClient(
-    'https://api.langflow.astra.datastax.com',
+    '/api', // Use the proxy path
     applicationToken
   );
 

@@ -1,18 +1,16 @@
-// Note: Replace **<YOUR_APPLICATION_TOKEN>** with your actual Application token
-
+// langflowClient.js
 class LangflowClient {
     constructor(baseURL, applicationToken) {
         this.baseURL = baseURL;
         this.applicationToken = applicationToken;
     }
+
     async post(endpoint, body, headers = {"Content-Type": "application/json"}) {
         headers["Authorization"] = `Bearer ${this.applicationToken}`;
-        headers["Content-Type"] = "application/json";
         const url = `${this.baseURL}${endpoint}`;
         try {
             const response = await fetch(url, {
                 method: 'POST',
-                // mode: 'no-cors',
                 headers: headers,
                 body: JSON.stringify(body)
             });
@@ -71,61 +69,5 @@ class LangflowClient {
         }
     }
 }
-
-// async function main(inputValue, inputType = 'chat', outputType = 'chat', stream = false) {
-//     const flowIdOrName = '36694925-0da8-455b-a42e-3dbed018c370';
-//     const langflowId = '4a9a63dd-f5fc-4541-ba7c-47f5b5de32fe';
-//     const applicationToken = '<YOUR_APPLICATION_TOKEN>';
-//     const langflowClient = new LangflowClient('https://api.langflow.astra.datastax.com',
-//         applicationToken);
-
-//     try {
-//       const tweaks = {
-//   "ChatInput-LtAOj": {},
-//   "ParseData-JovR2": {},
-//   "Prompt-m3o8S": {},
-//   "SplitText-mdmrU": {},
-//   "ChatOutput-4O3Nf": {},
-//   "AstraDB-DGplQ": {},
-//   "AstraDB-pKApT": {},
-//   "File-02A2e": {},
-//   "Google Generative AI Embeddings-rrOxr": {},
-//   "Google Generative AI Embeddings-aaAbE": {},
-//   "GoogleGenerativeAIModel-n0P0C": {}
-// };
-//       response = await langflowClient.runFlow(
-//           flowIdOrName,
-//           langflowId,
-//           inputValue,
-//           inputType,
-//           outputType,
-//           tweaks,
-//           stream,
-//           (data) => console.log("Received:", data.chunk), // onUpdate
-//           (message) => console.log("Stream Closed:", message), // onClose
-//           (error) => console.log("Stream Error:", error) // onError
-//       );
-//       if (!stream && response && response.outputs) {
-//           const flowOutputs = response.outputs[0];
-//           const firstComponentOutputs = flowOutputs.outputs[0];
-//           const output = firstComponentOutputs.outputs.message;
-
-//           console.log("Final Output:", output.message.text);
-//       }
-//     } catch (error) {
-//       console.error('Main Error', error.message);
-//     }
-// }
-
-// const args = process.argv.slice(2);
-// if (args.length < 1) {
-//   console.error('Please run the file with the message as an argument: node <YOUR_FILE_NAME>.js "user_message"');
-// }
-// main(
-//   args[0], // inputValue
-//   args[1], // inputType
-//   args[2], // outputType
-//   args[3] === 'true' // stream
-// );
 
 export default LangflowClient;
