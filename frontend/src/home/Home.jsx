@@ -6,6 +6,16 @@ import ChatInput from '../components/ChatInput';
 import LangflowClient from '../../utils/langFlowClient';
 import WelcomeMessage from '../components/WelcomeMessage';
 
+
+const formatMessage = (message) => {
+  // Replace **text** with bold text and * with new line
+  const formattedMessage = message
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold text
+    .replace(/\*/g, ' '); // New line for *
+
+  return formattedMessage;
+};
+
 export default function Home() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
@@ -44,7 +54,7 @@ export default function Home() {
         const firstComponentOutputs = flowOutputs.outputs[0];
         const output = firstComponentOutputs.outputs.message;
 
-        const botMessage = { type: 'ai', content: output.message.text };
+        const botMessage = { type: 'ai', content: formatMessage(output.message.text) };
         setMessages((prevMessages) => [...prevMessages, botMessage]); // Append AI response
       }
     } catch (error) {
@@ -56,6 +66,7 @@ export default function Home() {
       setInput('');
     }
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

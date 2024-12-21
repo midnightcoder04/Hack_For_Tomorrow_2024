@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Intro.module.css'
 import arrowicon from './arrow.svg'
 import screenshot1 from './image.png'
-import screenshot2 from './screenshot.png'
+import screenshot2 from './result.png'
 import { useNavigate } from 'react-router-dom'
 
 const Intro = () => {
